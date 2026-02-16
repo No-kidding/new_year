@@ -3,7 +3,7 @@ import random
 import streamlit as st
 
 st.set_page_config(
-    page_title="🧧 给欧阳闻笳的 2026 小冒险",
+    page_title="🧧 给欧阳闻笳的 新年 小冒险",
     page_icon="🎆",
     layout="wide",
     initial_sidebar_state="collapsed",
@@ -518,7 +518,7 @@ life_signs = [
     },
     {
         "level": "上签 · 身心都轻一点",
-        "text": "睡眠会变好，运动会更规律。\n你会慢慢把自己照顾得更好：不是自律，是自爱。",
+        "text": "睡眠会变好，运动会更规律。\n你会慢慢把自己照顾得更好",
     },
     {
         "level": "福签 · 出门见世界",
@@ -561,7 +561,7 @@ category_names = {"career": "💼 职场节奏签", "life": "🍃 生活状态�
 
 
 # ============ 顶部标题 ============
-st.markdown('<div class="main-title">2025 小结 · 2026 开好运</div>', unsafe_allow_html=True)
+st.markdown('<div class="main-title">辞岁 小结 · 新年 好运</div>', unsafe_allow_html=True)
 st.markdown(
     f'<div class="sub-title">这不是考核，也不需要完美。<br>这是一个送给 <b>{TARGET_NAME}</b> 的小冒险，你也可以顺便把自己抱一抱。</div>',
     unsafe_allow_html=True,
@@ -771,51 +771,56 @@ if st.session_state.stage == 3:
         tendency_blessings = {
             "career": f"""
 <div class="blessing-text">
-<b>{TARGET_NAME}</b>，有力量的你：<br><br>
-今年辛苦啦。你一直在把复杂的事讲清楚、把难走的路走稳。<br><br>
+<b>{TARGET_NAME}</b>，始终如一的你：<br><br>
+时光微澜，你在复杂与纷扰中，将一切打理得安稳妥帖。你的坚持与温柔，如同“采菊东篱下，悠然见南山”的清澈宁静。<br><br>
 2026 年，愿你：<br>
-- 忙的时候也能保住睡眠与胃口<br>
-- 该拒绝的拒绝得更自然，边界立得更温柔<br>
-- 努力被看见，回报也更体面<br><br>
-别忘了：你不是只能“扛”，你也可以被照顾。
+- 在忙碌间也能抽空照顾好自己，三餐有滋味，夜眠有安稳<br>
+- 学会温柔设界，为自己多一点松弛与自在<br>
+- 你的努力有人懂，你的小小苦恼，也被用心呵护<br>
+- 在四季流转里，有人与共，也能独自从容<br><br>
+请记得：山高路远，总有人为你点灯，也欢迎你偶尔停下来依靠。
 </div>
-<div class="blessing-wish">愿你稳稳向前，也被稳稳接住。</div>
+<div class="blessing-wish">愿你脚步从容，内心有光，前路有人同行，烦恼有人听——如诗中所言：“山一程，水一程，身向远方心自安。”</div>
 """,
             "life": f"""
 <div class="blessing-text">
-<b>{TARGET_NAME}</b>，认真生活的你：<br><br>
-愿你在 2026 里，拥有更多“刚刚好”的小确幸：一顿热饭、一阵晚风、一句不经意的关心。<br><br>
+<b>{TARGET_NAME}</b>，细心生活的你：<br><br>
+新的一年，愿你于日常琐碎中，也能拾到小小欢喜。一茶一饭，一窗光影，都成为温暖时光。<br>
+“人间烟火气，最抚凡人心。”<br><br>
 愿你：<br>
-- 把生活过成生活，而不是把自己过成任务清单<br>
-- 慢慢把自己照顾得更好：不是自律，是自爱<br>
-- 热爱常在，疲惫也能被安放<br><br>
-日子不需要很大声，也可以很动人。
+- 让生活不止是清单，更是一场悠然的旅行<br>
+- 在自我关照里，懂得温柔与自己和解<br>
+- 热爱能被持久地点亮，疲惫时有人给你靠岸<br>
+- 无论晴雨，都有人为你撑伞，有风景共赏<br><br>
+日子可以细水流长，也会悄然生花。
 </div>
-<div class="blessing-wish">愿你更轻、更暖、更像你。</div>
+<div class="blessing-wish">愿你清风徐来，温柔常在——“岁月悠悠，且以温柔共赴。”</div>
 """,
             "romance": f"""
 <div class="blessing-text">
-<b>{TARGET_NAME}</b>，温柔坚定的你：<br><br>
-你一直很会在平凡里给人安全感：记得、在意、回应。<br><br>
+<b>{TARGET_NAME}</b>，温柔且坚定的你：<br><br>
+你用心经营每一份情感，善于聆听，也懂得回应。你的温柔，像“云中谁寄锦书来”的惦念，微小却长久。<br><br>
 2026 年，愿你：<br>
-- 被理解，也被偏爱；被照顾，也被尊重<br>
-- 小浪漫有回声，小情绪有人接住<br>
-- 忙碌里也能留出拥抱与陪伴的时间<br><br>
-真正的浪漫，是认真生活，也是认真被爱。
+- 所思有人懂，所爱有回响<br>
+- 每一次心动，都被认真安放，每句未说的话，都有人细细领会<br>
+- 忙碌生活中，依旧能保留爱的仪式感<br>
+- 在独处时自得其乐，在相对时彼此照亮<br><br>
+浪漫无需张扬，用心生活便已动人。
 </div>
-<div class="blessing-wish">愿你心动有回声，温柔有着落。</div>
+<div class="blessing-wish">愿你所感所盼，都能温柔落地；“人间烟火处，有你也有我。”</div>
 """,
             "all": f"""
 <div class="blessing-text">
-<b>{TARGET_NAME}</b>，闪闪发光的你：<br><br>
-你很厉害：能扛事，也能保持温柔；能往前冲，也懂得停下来喘口气。<br><br>
+<b>{TARGET_NAME}</b>，自带光芒的你：<br><br>
+你在风雨中沉静前行，也始终保有善良与温情。“纵有疾风起，人生不言弃。”<br><br>
 2026 年，愿你：<br>
-- 工作顺利，情绪稳定，身体健康<br>
-- 想要的慢慢靠近，不想要的慢慢远离<br>
-- 把普通日子过成小惊喜，把重要的人放在心里<br><br>
-你值得世界对你更好一点。
+- 顺利自在，身心安泰，所求所愿皆有回响<br>
+- 人海茫茫，有人懂你欢喜，也能容你孤独<br>
+- 拥有把平凡日子过得有趣的能力，把温暖留给值得的人<br>
+- 心中常有诗意，眼里偶有星光<br><br>
+愿你被这世界温柔以待，但也懂得温柔待己。
 </div>
-<div class="blessing-wish">愿你被世界温柔以待，稳稳发光。</div>
+<div class="blessing-wish">愿你身在远方，心有归处，如“山河远阔，人间烟火，皆甘露。”</div>
 """,
         }
         title = tendency_titles.get(max_key, tendency_titles["all"])
@@ -839,6 +844,10 @@ if st.session_state.stage == 3:
 <div style="text-align:center; padding:1.5rem 0 0.5rem 0;">
   <div style="font-size:2.1rem; font-weight:900; color:#d4380d !important; word-wrap:break-word; overflow-wrap:break-word;">
     🎊 新年快乐，{TARGET_NAME}！🎊
+  </div>
+  <div style="font-size:1.05rem; color:#c4956a !important; margin-top:1.2rem; font-style:italic; letter-spacing:0.1em;">
+    —— 姜楠
+  </div>
 </div>
 <style>
 @media (max-width: 768px) {{
