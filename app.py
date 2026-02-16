@@ -29,7 +29,117 @@ st.markdown(
     .block-container {
         padding-top: 2.2rem;
         padding-bottom: 2.2rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
         max-width: 920px;
+    }
+
+    /* 移动端适配 */
+    @media (max-width: 768px) {
+        .block-container {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+            max-width: 100%;
+        }
+        
+        .main-title {
+            font-size: 1.8rem !important;
+            margin-bottom: 0.3rem;
+        }
+        
+        .sub-title {
+            font-size: 0.9rem !important;
+            margin-bottom: 1rem;
+            padding: 0 0.5rem;
+        }
+        
+        .card {
+            padding: 1rem !important;
+            margin: 0.5rem 0 !important;
+        }
+        
+        .comment-box {
+            padding: 0.8rem 1rem !important;
+            font-size: 0.9rem !important;
+            margin: 0.6rem 0 !important;
+        }
+        
+        .sign-container {
+            padding: 1rem 0.8rem !important;
+            margin: 0.5rem 0 !important;
+        }
+        
+        .jar-emoji {
+            font-size: 3rem !important;
+        }
+        
+        .sign-result {
+            padding: 1rem !important;
+            margin: 0.8rem 0 !important;
+        }
+        
+        .sign-level {
+            font-size: 1rem !important;
+            padding: 0.2rem 0.8rem !important;
+            white-space: normal;
+            word-wrap: break-word;
+        }
+        
+        .blessing-card {
+            padding: 1.5rem 1rem !important;
+            margin: 1rem 0 !important;
+        }
+        
+        .blessing-name {
+            font-size: 1.3rem !important;
+        }
+        
+        .blessing-level {
+            font-size: 0.95rem !important;
+            padding: 0.35rem 1rem !important;
+            white-space: normal;
+            word-wrap: break-word;
+        }
+        
+        .blessing-text {
+            font-size: 0.95rem !important;
+            padding: 0 0.5rem !important;
+            line-height: 1.8 !important;
+        }
+        
+        .blessing-wish {
+            font-size: 1rem !important;
+            padding: 0.7rem 0.8rem !important;
+        }
+        
+        .sign-summary {
+            padding: 0.8rem 1rem !important;
+            font-size: 0.9rem !important;
+        }
+        
+        .final-emoji {
+            font-size: 2rem !important;
+        }
+        
+        .stButton>button {
+            font-size: 0.95rem !important;
+            padding: 0.5rem 1rem !important;
+        }
+        
+        /* 移动端标题字体调整 */
+        h1, h2, h3 {
+            font-size: 1.3rem !important;
+        }
+        
+        h2 {
+            font-size: 1.2rem !important;
+        }
+        
+        h3 {
+            font-size: 1.1rem !important;
+        }
     }
 
     .main-title {
@@ -40,6 +150,8 @@ st.markdown(
         margin-bottom: 0.2rem;
         letter-spacing: 0.02em;
         text-shadow: 2px 2px 6px rgba(0,0,0,0.08);
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
     .sub-title {
         text-align: center;
@@ -48,6 +160,8 @@ st.markdown(
         margin-top: 0;
         margin-bottom: 1.8rem;
         line-height: 1.7;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 
     .welcome-box {
@@ -56,6 +170,8 @@ st.markdown(
         padding: 2rem;
         border: 1px solid #ffccc7;
         margin: 1rem 0;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 
     .card {
@@ -64,6 +180,8 @@ st.markdown(
         padding: 1.5rem;
         border: 1px solid #ffccc7;
         margin: 1rem 0;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
     .comment-box {
         background: #fffbe6;
@@ -72,6 +190,8 @@ st.markdown(
         padding: 1rem 1.2rem;
         margin: 0.8rem 0;
         font-size: 1rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 
     .sign-container {
@@ -82,6 +202,8 @@ st.markdown(
         margin: 0.7rem 0;
         text-align: center;
         height: 100%;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
     .sign-result {
         background: linear-gradient(135deg, #fffbe6 0%, #fff1f0 100%);
@@ -90,6 +212,8 @@ st.markdown(
         border: 2px solid #faad14;
         margin: 1rem 0;
         text-align: center;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
     .sign-level {
         font-size: 1.2rem;
@@ -101,6 +225,8 @@ st.markdown(
         border-radius: 999px;
         border: 1px solid #ffa39e;
         margin: 0.5rem 0;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
     .jar-emoji {
         font-size: 4.2rem;
@@ -120,12 +246,16 @@ st.markdown(
         margin: 1.2rem 0;
         text-align: center;
         box-shadow: 0 8px 32px rgba(255, 77, 79, 0.10);
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
     .blessing-name {
         font-size: 1.6rem;
         font-weight: 900;
         color: #d4380d;
         margin-bottom: 0.8rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
     .blessing-level {
         font-size: 1.1rem;
@@ -137,6 +267,8 @@ st.markdown(
         border: 1px solid #ffa39e;
         margin: 0.6rem 0 0 0;
         font-weight: 800;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
     .blessing-text {
         font-size: 1.12rem;
@@ -145,6 +277,8 @@ st.markdown(
         margin: 1.2rem 0;
         text-align: left;
         padding: 0 0.8rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
     .blessing-wish {
         font-size: 1.2rem;
@@ -154,6 +288,8 @@ st.markdown(
         padding: 0.9rem 1rem;
         background: rgba(255, 77, 79, 0.06);
         border-radius: 12px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
     .sign-summary {
         background: #fffbe6;
@@ -162,11 +298,15 @@ st.markdown(
         margin: 0.5rem 0;
         border: 1px solid #ffe58f;
         text-align: left;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
     .sign-summary-title {
         font-weight: 900;
         color: #d48806;
         margin-bottom: 0.2rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
     .final-emoji {
         font-size: 3rem;
@@ -185,6 +325,8 @@ st.markdown(
         font-weight: 800;
         width: 100%;
         transition: all 0.25s;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
     .stButton>button:hover {
         transform: translateY(-1px);
@@ -361,7 +503,7 @@ career_signs = [
         "text": "很多事不需要“硬扛”，会有人愿意一起把它做完。\n你会更擅长说“不”，也更擅长保护自己的时间。",
     },
     {
-        "level": "中签 · 忙而不乱",
+        "level": "吉签 · 忙而不乱",
         "text": "项目会多一点，会议也会多一点。\n但你会更会取舍：把精力花在值得的人和事上。",
     },
     {
@@ -384,7 +526,7 @@ life_signs = [
         "text": "睡眠会变好，运动会更规律。\n你会慢慢把自己照顾得更好：不是自律，是自爱。",
     },
     {
-        "level": "中签 · 出门见世界",
+        "level": "福签 · 出门见世界",
         "text": "今年适合小旅行：城市漫步、短途看海、周末去山里。\n不必远，只要出发。",
     },
     {
@@ -407,7 +549,7 @@ romance_signs = [
         "text": "你们会更懂彼此：一个眼神就知道在想什么。\n争执会更少，拥抱会更多。",
     },
     {
-        "level": "中签 · 小浪漫更耐久",
+        "level": "喜签 · 小浪漫更耐久",
         "text": "不是烟花式的轰动，而是日常里的用心：\n记得你喜欢的口味，留一盏晚归的灯。",
     },
     {
@@ -561,12 +703,23 @@ if st.session_state.stage == 2:
                 st.markdown(
                     f"""
 <div class="sign-result">
-  <div style="font-size:0.95rem; color:#8c8c8c; margin-bottom:0.4rem;">{category_names.get(cat, cat)}</div>
+  <div style="font-size:0.95rem; color:#8c8c8c; margin-bottom:0.4rem; word-wrap:break-word; overflow-wrap:break-word;">{category_names.get(cat, cat)}</div>
   <div class="sign-level">{result['level']}</div>
-  <div style="font-size:1.05rem; color:#434343; line-height:1.85; margin-top:0.8rem;">
+  <div style="font-size:1.05rem; color:#434343; line-height:1.85; margin-top:0.8rem; word-wrap:break-word; overflow-wrap:break-word;">
     {result['text'].replace(chr(10), '<br>')}
   </div>
 </div>
+<style>
+@media (max-width: 768px) {{
+  .sign-result div[style*="font-size:1.05rem"] {{
+    font-size: 0.9rem !important;
+    line-height: 1.6 !important;
+  }}
+  .sign-result div[style*="font-size:0.95rem"] {{
+    font-size: 0.85rem !important;
+  }}
+}}
+</style>
 """,
                     unsafe_allow_html=True,
                 )
@@ -689,13 +842,23 @@ if st.session_state.stage == 3:
         st.markdown(
             f"""
 <div style="text-align:center; padding:1.5rem 0 0.5rem 0;">
-  <div style="font-size:2.1rem; font-weight:900; color:#d4380d;">
+  <div style="font-size:2.1rem; font-weight:900; color:#d4380d; word-wrap:break-word; overflow-wrap:break-word;">
     🎊 新年快乐，{TARGET_NAME}！🎊
   </div>
-  <div style="font-size:1.1rem; color:#8c8c8c; margin-top:0.4rem;">
+  <div style="font-size:1.1rem; color:#8c8c8c; margin-top:0.4rem; word-wrap:break-word; overflow-wrap:break-word;">
     2026，把日子过得更轻、更暖、更像你。
   </div>
 </div>
+<style>
+@media (max-width: 768px) {{
+  div[style*="font-size:2.1rem"] {{
+    font-size: 1.5rem !important;
+  }}
+  div[style*="font-size:1.1rem"] {{
+    font-size: 0.95rem !important;
+  }}
+}}
+</style>
 """,
             unsafe_allow_html=True,
         )
@@ -705,9 +868,19 @@ if st.session_state.stage == 3:
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-  body { margin: 0; overflow: hidden; background: #0a0a2e; }
-  canvas { display: block; }
+  body { 
+    margin: 0; 
+    overflow: hidden; 
+    background: #0a0a2e; 
+    width: 100%;
+  }
+  canvas { 
+    display: block; 
+    width: 100%;
+    max-width: 100%;
+  }
 </style>
 </head>
 <body>
@@ -715,19 +888,43 @@ if st.session_state.stage == 3:
 <script>
 const canvas = document.getElementById('fireworks');
 const ctx = canvas.getContext('2d');
-canvas.width = canvas.parentElement.clientWidth || 700;
-canvas.height = 420;
+
+// 移动端适配：获取容器实际宽度
+function resizeCanvas() {
+  const container = canvas.parentElement;
+  const containerWidth = container ? container.clientWidth : window.innerWidth;
+  const isMobile = window.innerWidth <= 768;
+  
+  canvas.width = containerWidth || window.innerWidth || 700;
+  canvas.height = isMobile ? 300 : 420;
+}
+
+// 初始设置
+resizeCanvas();
+
+// 监听窗口大小变化
+window.addEventListener('resize', resizeCanvas);
 
 class Particle {
   constructor(x, y, color, velocity, life) {
     this.x = x; this.y = y; this.color = color; this.velocity = velocity;
     this.life = life; this.maxLife = life; this.gravity = 0.02;
   }
-  update() { this.velocity.y += this.gravity; this.x += this.velocity.x; this.y += this.velocity.y; this.life--; }
+  update() { 
+    this.velocity.y += this.gravity; 
+    this.x += this.velocity.x; 
+    this.y += this.velocity.y; 
+    this.life--; 
+  }
   draw() {
     const alpha = this.life / this.maxLife;
-    ctx.save(); ctx.globalAlpha = alpha; ctx.fillStyle = this.color;
-    ctx.beginPath(); ctx.arc(this.x, this.y, 2, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+    ctx.save(); 
+    ctx.globalAlpha = alpha; 
+    ctx.fillStyle = this.color;
+    ctx.beginPath(); 
+    ctx.arc(this.x, this.y, 2, 0, Math.PI * 2); 
+    ctx.fill(); 
+    ctx.restore();
   }
 }
 
@@ -752,7 +949,8 @@ class Firework {
   }
   explode() {
     this.exploded = true;
-    const particleCount = 70 + Math.floor(Math.random() * 30);
+    const isMobile = window.innerWidth <= 768;
+    const particleCount = isMobile ? 50 + Math.floor(Math.random() * 20) : 70 + Math.floor(Math.random() * 30);
     for (let i = 0; i < particleCount; i++) {
       const angle = (Math.PI * 2 / particleCount) * i;
       const speed = 1 + Math.random() * 3;
@@ -761,7 +959,12 @@ class Firework {
     }
   }
   draw() {
-    if (!this.exploded) { ctx.fillStyle = this.color; ctx.beginPath(); ctx.arc(this.x, this.y, 3, 0, Math.PI * 2); ctx.fill(); }
+    if (!this.exploded) { 
+      ctx.fillStyle = this.color; 
+      ctx.beginPath(); 
+      ctx.arc(this.x, this.y, 3, 0, Math.PI * 2); 
+      ctx.fill(); 
+    }
     this.particles.forEach(p => p.draw());
   }
   isDead() { return this.exploded && this.particles.length === 0; }
@@ -772,17 +975,22 @@ let frame = 0;
 function animate() {
   ctx.fillStyle = 'rgba(10, 10, 46, 0.15)';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
-  if (frame % 40 === 0 || (frame < 100 && frame % 15 === 0)) fireworks.push(new Firework());
+  const isMobile = window.innerWidth <= 768;
+  const spawnRate = isMobile ? 60 : 40;
+  if (frame % spawnRate === 0 || (frame < 100 && frame % 15 === 0)) {
+    fireworks.push(new Firework());
+  }
   fireworks.forEach(f => { f.update(); f.draw(); });
   fireworks = fireworks.filter(f => !f.isDead());
-  frame++; requestAnimationFrame(animate);
+  frame++; 
+  requestAnimationFrame(animate);
 }
 animate();
 </script>
 </body>
 </html>
 """
-        components.html(fireworks_html, height=440)
+        components.html(fireworks_html, height=440, scrolling=False)
 
         st.markdown("---")
         col1, col2 = st.columns(2)
