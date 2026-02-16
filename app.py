@@ -19,21 +19,70 @@ st.markdown(
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap');
 
-    /* 强制所有自定义 HTML 区域使用浅色文字配色，防止深色主题覆盖 */
-    [data-testid="stMarkdownContainer"] {
+    /* ====== 强制浅色主题：覆盖 Streamlit 深色模式 ====== */
+    :root {
+        color-scheme: light only !important;
+    }
+    html, body,
+    .stApp,
+    [data-testid="stAppViewContainer"],
+    [data-testid="stApp"],
+    [data-testid="stMain"],
+    .main,
+    .main > div,
+    section.main > div {
+        background-color: #fffdf6 !important;
+        color: #333 !important;
+    }
+    /* Streamlit 所有文本元素强制深色字 */
+    .stApp p,
+    .stApp span,
+    .stApp label,
+    .stApp li,
+    .stApp div,
+    .stApp [data-testid="stMarkdownContainer"],
+    .stApp [data-testid="stMarkdownContainer"] p,
+    .stApp [data-testid="stMarkdownContainer"] span,
+    .stApp [data-testid="stCaptionContainer"] p,
+    .stApp [data-testid="stCaptionContainer"] span {
         color: #434343 !important;
     }
-    :root {
-        color-scheme: light !important;
+    /* 标题强制深色 */
+    .stApp h1, .stApp h2, .stApp h3, .stApp h4 {
+        color: #262626 !important;
+    }
+    /* 分割线 */
+    .stApp hr {
+        border-color: #f0d9d0 !important;
+        opacity: 0.6;
+    }
+    /* radio 选项文字 */
+    .stApp .stRadio label span p,
+    .stApp .stRadio > div > label > div > p,
+    .stApp [role="radiogroup"] label {
+        color: #434343 !important;
+    }
+    /* caption 文字（灰色） */
+    .stApp [data-testid="stCaptionContainer"] p {
+        color: #8c8c8c !important;
+    }
+    /* info/success/warning 框内文字 */
+    .stApp [data-testid="stAlert"] p {
+        color: #333 !important;
+    }
+    /* iframe 容器强制全宽 */
+    .stApp iframe {
+        width: 100% !important;
+        min-width: 100% !important;
     }
 
-    /* 单界面：隐藏侧边栏与顶部控件，让流程更沉浸 */
+    /* ====== 隐藏侧边栏与顶部控件 ====== */
     [data-testid="stSidebar"] { display: none; }
     [data-testid="collapsedControl"] { display: none; }
     [data-testid="stHeader"] { display: none; }
     footer { display: none; }
 
-    /* 收拢内容宽度，让它更像一个完整界面里的流程 */
+    /* ====== 收拢内容宽度 ====== */
     .block-container {
         padding-top: 2.2rem;
         padding-bottom: 2.2rem;
@@ -42,7 +91,7 @@ st.markdown(
         max-width: 920px;
     }
 
-    /* 移动端适配 */
+    /* ====== 移动端适配 ====== */
     @media (max-width: 768px) {
         .block-container {
             padding-top: 0.5rem;
@@ -51,105 +100,28 @@ st.markdown(
             padding-right: 0.75rem;
             max-width: 100%;
         }
-        
-        .main-title {
-            font-size: 1.8rem !important;
-            margin-bottom: 0.3rem;
-        }
-        
-        .sub-title {
-            font-size: 0.9rem !important;
-            margin-bottom: 1rem;
-            padding: 0 0.5rem;
-        }
-        
-        .card {
-            padding: 1rem !important;
-            margin: 0.5rem 0 !important;
-        }
-        
-        .comment-box {
-            padding: 0.8rem 1rem !important;
-            font-size: 0.9rem !important;
-            margin: 0.6rem 0 !important;
-        }
-        
-        .sign-container {
-            padding: 1rem 0.8rem !important;
-            margin: 0.5rem 0 !important;
-        }
-        
-        .jar-emoji {
-            font-size: 3rem !important;
-        }
-        
-        .sign-result {
-            padding: 1rem !important;
-            margin: 0.8rem 0 !important;
-        }
-        
-        .sign-level {
-            font-size: 1rem !important;
-            padding: 0.2rem 0.8rem !important;
-            white-space: normal;
-            word-wrap: break-word;
-        }
-        
-        .blessing-card {
-            padding: 1.5rem 1rem !important;
-            margin: 1rem 0 !important;
-        }
-        
-        .blessing-name {
-            font-size: 1.3rem !important;
-        }
-        
-        .blessing-level {
-            font-size: 0.95rem !important;
-            padding: 0.35rem 1rem !important;
-            white-space: normal;
-            word-wrap: break-word;
-        }
-        
-        .blessing-text {
-            font-size: 0.95rem !important;
-            padding: 0 0.5rem !important;
-            line-height: 1.8 !important;
-        }
-        
-        .blessing-wish {
-            font-size: 1rem !important;
-            padding: 0.7rem 0.8rem !important;
-        }
-        
-        .sign-summary {
-            padding: 0.8rem 1rem !important;
-            font-size: 0.9rem !important;
-        }
-        
-        .final-emoji {
-            font-size: 2rem !important;
-        }
-        
-        .stButton>button {
-            font-size: 0.95rem !important;
-            padding: 0.5rem 1rem !important;
-        }
-        
-        /* 移动端标题字体调整 */
-        h1, h2, h3 {
-            font-size: 1.3rem !important;
-        }
-        
-        h2 {
-            font-size: 1.2rem !important;
-        }
-        
-        h3 {
-            font-size: 1.1rem !important;
-        }
+        .main-title { font-size: 1.8rem !important; margin-bottom: 0.3rem; }
+        .sub-title { font-size: 0.9rem !important; margin-bottom: 1rem; padding: 0 0.5rem; }
+        .card { padding: 1rem !important; margin: 0.5rem 0 !important; }
+        .comment-box { padding: 0.8rem 1rem !important; font-size: 0.9rem !important; margin: 0.6rem 0 !important; }
+        .sign-container { padding: 1rem 0.8rem !important; margin: 0.5rem 0 !important; }
+        .jar-emoji { font-size: 3rem !important; }
+        .sign-result { padding: 1rem !important; margin: 0.8rem 0 !important; }
+        .sign-level { font-size: 1rem !important; padding: 0.2rem 0.8rem !important; white-space: normal; word-wrap: break-word; }
+        .blessing-card { padding: 1.5rem 1rem !important; margin: 1rem 0 !important; }
+        .blessing-name { font-size: 1.3rem !important; }
+        .blessing-level { font-size: 0.95rem !important; padding: 0.35rem 1rem !important; white-space: normal; word-wrap: break-word; }
+        .blessing-text { font-size: 0.95rem !important; padding: 0 0.5rem !important; line-height: 1.8 !important; }
+        .blessing-wish { font-size: 1rem !important; padding: 0.7rem 0.8rem !important; }
+        .sign-summary { padding: 0.8rem 1rem !important; font-size: 0.9rem !important; }
+        .final-emoji { font-size: 2rem !important; }
+        .stButton>button { font-size: 0.95rem !important; padding: 0.5rem 1rem !important; }
+        h1, h2, h3 { font-size: 1.3rem !important; }
+        h2 { font-size: 1.2rem !important; }
+        h3 { font-size: 1.1rem !important; }
     }
 
+    /* ====== 自定义组件样式 ====== */
     .main-title {
         text-align: center;
         font-size: 2.6rem;
@@ -170,6 +142,9 @@ st.markdown(
         line-height: 1.7;
         word-wrap: break-word;
         overflow-wrap: break-word;
+    }
+    .sub-title b {
+        color: #d4380d !important;
     }
 
     .welcome-box {
@@ -337,8 +312,8 @@ st.markdown(
     }
 
     .stButton>button {
-        background: linear-gradient(135deg, #ff4d4f 0%, #ff7a45 100%);
-        color: white;
+        background: linear-gradient(135deg, #ff4d4f 0%, #ff7a45 100%) !important;
+        color: white !important;
         border: none;
         border-radius: 12px;
         padding: 0.6rem 1.2rem;
@@ -886,160 +861,76 @@ if st.session_state.stage == 3:
 
         st.markdown("### 🎇 小小烟花")
         fireworks_html = """
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { 
-    margin: 0; 
-    padding: 0;
-    overflow: hidden; 
-    background: #0a0a2e; 
-    width: 100%;
-    height: 100%;
-  }
-  canvas { 
-    display: block; 
-  }
-</style>
-</head>
-<body>
-<canvas id="fireworks"></canvas>
+<div style="width:100%;background:#0a0a2e;border-radius:12px;overflow:hidden;position:relative;">
+<canvas id="fw" width="700" height="380" style="width:100%;display:block;background:#0a0a2e;"></canvas>
+</div>
 <script>
-(function() {
-  var canvas = document.getElementById('fireworks');
-  var ctx = canvas.getContext('2d');
+(function(){
+  var c = document.getElementById('fw');
+  if(!c) return;
+  var g = c.getContext('2d');
+  var W = 700, H = 380;
+  var CL = ['#ff4d4f','#ff7a45','#ffa940','#ffc53d','#ff85c0','#b37feb','#5cdbd3','#69b1ff','#95de64','#fff566','#ffffff'];
+  var ps = [];
+  var fs = [];
+  var fr = 0;
 
-  function getWidth() {
-    return Math.max(
-      document.documentElement.clientWidth || 0,
-      document.body.clientWidth || 0,
-      window.innerWidth || 0,
-      canvas.parentElement ? canvas.parentElement.clientWidth : 0,
-      300
-    );
+  function P(x,y,cl,vx,vy,li){
+    this.x=x;this.y=y;this.cl=cl;this.vx=vx;this.vy=vy;this.li=li;this.ml=li;
   }
-
-  function getHeight() {
-    var w = getWidth();
-    return w <= 500 ? 280 : 400;
-  }
-
-  function resizeCanvas() {
-    canvas.width = getWidth();
-    canvas.height = getHeight();
-  }
-
-  // 初始设置 + 延迟再设一次（确保 iframe 渲染完成）
-  resizeCanvas();
-  setTimeout(resizeCanvas, 100);
-  setTimeout(resizeCanvas, 500);
-  window.addEventListener('resize', resizeCanvas);
-
-  function Particle(x, y, color, vx, vy, life) {
-    this.x = x; this.y = y; this.color = color;
-    this.vx = vx; this.vy = vy;
-    this.life = life; this.maxLife = life; this.gravity = 0.025;
-  }
-  Particle.prototype.update = function() {
-    this.vy += this.gravity;
-    this.x += this.vx;
-    this.y += this.vy;
-    this.life--;
-  };
-  Particle.prototype.draw = function() {
-    var alpha = Math.max(this.life / this.maxLife, 0);
-    ctx.save();
-    ctx.globalAlpha = alpha;
-    ctx.fillStyle = this.color;
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.restore();
+  P.prototype.up=function(){this.vy+=0.025;this.x+=this.vx;this.y+=this.vy;this.li--;};
+  P.prototype.dr=function(){
+    var a=Math.max(this.li/this.ml,0);
+    g.save();g.globalAlpha=a;g.fillStyle=this.cl;
+    g.beginPath();g.arc(this.x,this.y,2.5,0,6.28);g.fill();g.restore();
   };
 
-  var COLORS = ['#ff4d4f','#ff7a45','#ffa940','#ffc53d','#ff85c0','#b37feb','#5cdbd3','#69b1ff','#95de64','#fff566'];
-
-  function Firework() {
-    this.x = Math.random() * canvas.width;
-    this.y = canvas.height;
-    this.targetY = Math.random() * canvas.height * 0.4 + 20;
-    this.speed = 3 + Math.random() * 2;
-    this.exploded = false;
-    this.particles = [];
-    this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
+  function F(){
+    this.x=Math.random()*W;
+    this.y=H;
+    this.ty=Math.random()*H*0.35+20;
+    this.sp=3+Math.random()*2;
+    this.ex=false;
+    this.ps=[];
+    this.cl=CL[Math.floor(Math.random()*CL.length)];
   }
-  Firework.prototype.update = function() {
-    if (!this.exploded) {
-      this.y -= this.speed;
-      if (this.y <= this.targetY) this.explode();
-    }
-    for (var i = this.particles.length - 1; i >= 0; i--) {
-      this.particles[i].update();
-      if (this.particles[i].life <= 0) this.particles.splice(i, 1);
+  F.prototype.up=function(){
+    if(!this.ex){this.y-=this.sp;if(this.y<=this.ty)this.boom();}
+    for(var i=this.ps.length-1;i>=0;i--){this.ps[i].up();if(this.ps[i].li<=0)this.ps.splice(i,1);}
+  };
+  F.prototype.boom=function(){
+    this.ex=true;
+    var n=55;
+    for(var i=0;i<n;i++){
+      var a=(6.28/n)*i;
+      var s=1+Math.random()*2.8;
+      var cl=CL[Math.floor(Math.random()*CL.length)];
+      this.ps.push(new P(this.x,this.y,cl,Math.cos(a)*s,Math.sin(a)*s,40+Math.floor(Math.random()*25)));
     }
   };
-  Firework.prototype.explode = function() {
-    this.exploded = true;
-    var count = canvas.width <= 500 ? 45 : 70;
-    for (var i = 0; i < count; i++) {
-      var angle = (Math.PI * 2 / count) * i;
-      var speed = 1 + Math.random() * 2.5;
-      var c = COLORS[Math.floor(Math.random() * COLORS.length)];
-      this.particles.push(new Particle(
-        this.x, this.y, c,
-        Math.cos(angle) * speed, Math.sin(angle) * speed,
-        45 + Math.floor(Math.random() * 25)
-      ));
-    }
+  F.prototype.dr=function(){
+    if(!this.ex){g.fillStyle=this.cl;g.beginPath();g.arc(this.x,this.y,3,0,6.28);g.fill();}
+    for(var i=0;i<this.ps.length;i++){this.ps[i].dr();}
   };
-  Firework.prototype.draw = function() {
-    if (!this.exploded) {
-      ctx.fillStyle = this.color;
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
-      ctx.fill();
-    }
-    for (var i = 0; i < this.particles.length; i++) {
-      this.particles[i].draw();
-    }
-  };
-  Firework.prototype.isDead = function() {
-    return this.exploded && this.particles.length === 0;
-  };
+  F.prototype.dead=function(){return this.ex&&this.ps.length===0;};
 
-  var fireworks = [];
-  var frame = 0;
-
-  function animate() {
-    ctx.fillStyle = 'rgba(10, 10, 46, 0.18)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    var spawnRate = canvas.width <= 500 ? 55 : 35;
-    if (frame % spawnRate === 0 || (frame < 80 && frame % 12 === 0)) {
-      fireworks.push(new Firework());
-    }
-    for (var i = fireworks.length - 1; i >= 0; i--) {
-      fireworks[i].update();
-      fireworks[i].draw();
-      if (fireworks[i].isDead()) fireworks.splice(i, 1);
-    }
-    frame++;
-    requestAnimationFrame(animate);
+  function run(){
+    g.fillStyle='rgba(10,10,46,0.18)';
+    g.fillRect(0,0,W,H);
+    if(fr%38===0||(fr<90&&fr%10===0)){fs.push(new F());}
+    for(var i=fs.length-1;i>=0;i--){fs[i].up();fs[i].dr();if(fs[i].dead())fs.splice(i,1);}
+    fr++;
+    requestAnimationFrame(run);
   }
 
-  // 延迟启动，确保 iframe 完全渲染
-  setTimeout(function() {
-    resizeCanvas();
-    animate();
-  }, 200);
+  // 画一帧背景，确保立即可见
+  g.fillStyle='#0a0a2e';
+  g.fillRect(0,0,W,H);
+  run();
 })();
 </script>
-</body>
-</html>
 """
-        components.html(fireworks_html, height=420, scrolling=False)
+        components.html(fireworks_html, height=400, scrolling=False)
 
         st.markdown("---")
         col1, col2 = st.columns(2)
