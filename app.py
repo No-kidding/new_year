@@ -19,6 +19,14 @@ st.markdown(
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap');
 
+    /* 强制所有自定义 HTML 区域使用浅色文字配色，防止深色主题覆盖 */
+    [data-testid="stMarkdownContainer"] {
+        color: #434343 !important;
+    }
+    :root {
+        color-scheme: light !important;
+    }
+
     /* 单界面：隐藏侧边栏与顶部控件，让流程更沉浸 */
     [data-testid="stSidebar"] { display: none; }
     [data-testid="collapsedControl"] { display: none; }
@@ -146,7 +154,7 @@ st.markdown(
         text-align: center;
         font-size: 2.6rem;
         font-weight: 800;
-        color: #d4380d;
+        color: #d4380d !important;
         margin-bottom: 0.2rem;
         letter-spacing: 0.02em;
         text-shadow: 2px 2px 6px rgba(0,0,0,0.08);
@@ -156,7 +164,7 @@ st.markdown(
     .sub-title {
         text-align: center;
         font-size: 1.05rem;
-        color: #8c8c8c;
+        color: #8c8c8c !important;
         margin-top: 0;
         margin-bottom: 1.8rem;
         line-height: 1.7;
@@ -165,61 +173,69 @@ st.markdown(
     }
 
     .welcome-box {
-        background: linear-gradient(135deg, #fff1f0 0%, #fff7e6 100%);
+        background: linear-gradient(135deg, #fff1f0 0%, #fff7e6 100%) !important;
         border-radius: 18px;
         padding: 2rem;
         border: 1px solid #ffccc7;
         margin: 1rem 0;
+        color: #434343 !important;
         word-wrap: break-word;
         overflow-wrap: break-word;
     }
 
     .card {
-        background: linear-gradient(135deg, #fff1f0 0%, #fff7e6 100%);
+        background: linear-gradient(135deg, #fff1f0 0%, #fff7e6 100%) !important;
         border-radius: 16px;
         padding: 1.5rem;
         border: 1px solid #ffccc7;
         margin: 1rem 0;
+        color: #434343 !important;
         word-wrap: break-word;
         overflow-wrap: break-word;
     }
     .comment-box {
-        background: #fffbe6;
+        background: #fffbe6 !important;
         border: 1px solid #ffe58f;
         border-radius: 12px;
         padding: 1rem 1.2rem;
         margin: 0.8rem 0;
         font-size: 1rem;
+        color: #434343 !important;
         word-wrap: break-word;
         overflow-wrap: break-word;
     }
+    .comment-box b {
+        color: #d48806 !important;
+    }
 
     .sign-container {
-        background: linear-gradient(135deg, #fff1f0 0%, #fff7e6 100%);
+        background: linear-gradient(135deg, #fff1f0 0%, #fff7e6 100%) !important;
         border-radius: 16px;
         padding: 1.6rem 1.2rem;
         border: 1px solid #ffccc7;
         margin: 0.7rem 0;
         text-align: center;
         height: 100%;
+        color: #434343 !important;
         word-wrap: break-word;
         overflow-wrap: break-word;
     }
     .sign-result {
-        background: linear-gradient(135deg, #fffbe6 0%, #fff1f0 100%);
+        background: linear-gradient(135deg, #fffbe6 0%, #fff1f0 100%) !important;
         border-radius: 16px;
         padding: 1.5rem;
         border: 2px solid #faad14;
         margin: 1rem 0;
         text-align: center;
+        color: #434343 !important;
         word-wrap: break-word;
         overflow-wrap: break-word;
     }
     .sign-level {
         font-size: 1.2rem;
         font-weight: 800;
-        color: #cf1322;
-        background: #fff1f0;
+        color: #cf1322 !important;
+        background: #fff1f0 !important;
         display: inline-block;
         padding: 0.25rem 1.1rem;
         border-radius: 999px;
@@ -239,28 +255,29 @@ st.markdown(
     .jar-emoji:hover { transform: scale(1.08); }
 
     .blessing-card {
-        background: linear-gradient(135deg, #fff1f0 0%, #fff7e6 50%, #f6ffed 100%);
+        background: linear-gradient(135deg, #fff1f0 0%, #fff7e6 50%, #f6ffed 100%) !important;
         border-radius: 20px;
         padding: 2.2rem;
         border: 2px solid #ffccc7;
         margin: 1.2rem 0;
         text-align: center;
         box-shadow: 0 8px 32px rgba(255, 77, 79, 0.10);
+        color: #434343 !important;
         word-wrap: break-word;
         overflow-wrap: break-word;
     }
     .blessing-name {
         font-size: 1.6rem;
         font-weight: 900;
-        color: #d4380d;
+        color: #d4380d !important;
         margin-bottom: 0.8rem;
         word-wrap: break-word;
         overflow-wrap: break-word;
     }
     .blessing-level {
         font-size: 1.1rem;
-        color: #cf1322;
-        background: linear-gradient(135deg, #fff1f0, #fffbe6);
+        color: #cf1322 !important;
+        background: linear-gradient(135deg, #fff1f0, #fffbe6) !important;
         display: inline-block;
         padding: 0.45rem 1.2rem;
         border-radius: 999px;
@@ -272,7 +289,7 @@ st.markdown(
     }
     .blessing-text {
         font-size: 1.12rem;
-        color: #434343;
+        color: #434343 !important;
         line-height: 2;
         margin: 1.2rem 0;
         text-align: left;
@@ -280,30 +297,34 @@ st.markdown(
         word-wrap: break-word;
         overflow-wrap: break-word;
     }
+    .blessing-text b {
+        color: #d4380d !important;
+    }
     .blessing-wish {
         font-size: 1.2rem;
-        color: #d4380d;
+        color: #d4380d !important;
         font-weight: 900;
         margin-top: 1.2rem;
         padding: 0.9rem 1rem;
-        background: rgba(255, 77, 79, 0.06);
+        background: rgba(255, 77, 79, 0.06) !important;
         border-radius: 12px;
         word-wrap: break-word;
         overflow-wrap: break-word;
     }
     .sign-summary {
-        background: #fffbe6;
+        background: #fffbe6 !important;
         border-radius: 12px;
         padding: 0.9rem 1.2rem;
         margin: 0.5rem 0;
         border: 1px solid #ffe58f;
         text-align: left;
+        color: #434343 !important;
         word-wrap: break-word;
         overflow-wrap: break-word;
     }
     .sign-summary-title {
         font-weight: 900;
-        color: #d48806;
+        color: #d48806 !important;
         margin-bottom: 0.2rem;
         word-wrap: break-word;
         overflow-wrap: break-word;
@@ -703,9 +724,9 @@ if st.session_state.stage == 2:
                 st.markdown(
                     f"""
 <div class="sign-result">
-  <div style="font-size:0.95rem; color:#8c8c8c; margin-bottom:0.4rem; word-wrap:break-word; overflow-wrap:break-word;">{category_names.get(cat, cat)}</div>
+  <div style="font-size:0.95rem; color:#8c8c8c !important; margin-bottom:0.4rem; word-wrap:break-word; overflow-wrap:break-word;">{category_names.get(cat, cat)}</div>
   <div class="sign-level">{result['level']}</div>
-  <div style="font-size:1.05rem; color:#434343; line-height:1.85; margin-top:0.8rem; word-wrap:break-word; overflow-wrap:break-word;">
+  <div style="font-size:1.05rem; color:#434343 !important; line-height:1.85; margin-top:0.8rem; word-wrap:break-word; overflow-wrap:break-word;">
     {result['text'].replace(chr(10), '<br>')}
   </div>
 </div>
@@ -842,10 +863,10 @@ if st.session_state.stage == 3:
         st.markdown(
             f"""
 <div style="text-align:center; padding:1.5rem 0 0.5rem 0;">
-  <div style="font-size:2.1rem; font-weight:900; color:#d4380d; word-wrap:break-word; overflow-wrap:break-word;">
+  <div style="font-size:2.1rem; font-weight:900; color:#d4380d !important; word-wrap:break-word; overflow-wrap:break-word;">
     🎊 新年快乐，{TARGET_NAME}！🎊
   </div>
-  <div style="font-size:1.1rem; color:#8c8c8c; margin-top:0.4rem; word-wrap:break-word; overflow-wrap:break-word;">
+  <div style="font-size:1.1rem; color:#8c8c8c !important; margin-top:0.4rem; word-wrap:break-word; overflow-wrap:break-word;">
     2026，把日子过得更轻、更暖、更像你。
   </div>
 </div>
@@ -868,129 +889,157 @@ if st.session_state.stage == 3:
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <style>
-  body { 
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { 
     margin: 0; 
+    padding: 0;
     overflow: hidden; 
     background: #0a0a2e; 
     width: 100%;
+    height: 100%;
   }
   canvas { 
     display: block; 
-    width: 100%;
-    max-width: 100%;
   }
 </style>
 </head>
 <body>
 <canvas id="fireworks"></canvas>
 <script>
-const canvas = document.getElementById('fireworks');
-const ctx = canvas.getContext('2d');
+(function() {
+  var canvas = document.getElementById('fireworks');
+  var ctx = canvas.getContext('2d');
 
-// 移动端适配：获取容器实际宽度
-function resizeCanvas() {
-  const container = canvas.parentElement;
-  const containerWidth = container ? container.clientWidth : window.innerWidth;
-  const isMobile = window.innerWidth <= 768;
-  
-  canvas.width = containerWidth || window.innerWidth || 700;
-  canvas.height = isMobile ? 300 : 420;
-}
-
-// 初始设置
-resizeCanvas();
-
-// 监听窗口大小变化
-window.addEventListener('resize', resizeCanvas);
-
-class Particle {
-  constructor(x, y, color, velocity, life) {
-    this.x = x; this.y = y; this.color = color; this.velocity = velocity;
-    this.life = life; this.maxLife = life; this.gravity = 0.02;
+  function getWidth() {
+    return Math.max(
+      document.documentElement.clientWidth || 0,
+      document.body.clientWidth || 0,
+      window.innerWidth || 0,
+      canvas.parentElement ? canvas.parentElement.clientWidth : 0,
+      300
+    );
   }
-  update() { 
-    this.velocity.y += this.gravity; 
-    this.x += this.velocity.x; 
-    this.y += this.velocity.y; 
-    this.life--; 
+
+  function getHeight() {
+    var w = getWidth();
+    return w <= 500 ? 280 : 400;
   }
-  draw() {
-    const alpha = this.life / this.maxLife;
-    ctx.save(); 
-    ctx.globalAlpha = alpha; 
+
+  function resizeCanvas() {
+    canvas.width = getWidth();
+    canvas.height = getHeight();
+  }
+
+  // 初始设置 + 延迟再设一次（确保 iframe 渲染完成）
+  resizeCanvas();
+  setTimeout(resizeCanvas, 100);
+  setTimeout(resizeCanvas, 500);
+  window.addEventListener('resize', resizeCanvas);
+
+  function Particle(x, y, color, vx, vy, life) {
+    this.x = x; this.y = y; this.color = color;
+    this.vx = vx; this.vy = vy;
+    this.life = life; this.maxLife = life; this.gravity = 0.025;
+  }
+  Particle.prototype.update = function() {
+    this.vy += this.gravity;
+    this.x += this.vx;
+    this.y += this.vy;
+    this.life--;
+  };
+  Particle.prototype.draw = function() {
+    var alpha = Math.max(this.life / this.maxLife, 0);
+    ctx.save();
+    ctx.globalAlpha = alpha;
     ctx.fillStyle = this.color;
-    ctx.beginPath(); 
-    ctx.arc(this.x, this.y, 2, 0, Math.PI * 2); 
-    ctx.fill(); 
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
+    ctx.fill();
     ctx.restore();
-  }
-}
+  };
 
-class Firework {
-  constructor() {
+  var COLORS = ['#ff4d4f','#ff7a45','#ffa940','#ffc53d','#ff85c0','#b37feb','#5cdbd3','#69b1ff','#95de64','#fff566'];
+
+  function Firework() {
     this.x = Math.random() * canvas.width;
     this.y = canvas.height;
-    this.targetY = Math.random() * canvas.height * 0.4 + 30;
+    this.targetY = Math.random() * canvas.height * 0.4 + 20;
     this.speed = 3 + Math.random() * 2;
     this.exploded = false;
     this.particles = [];
-    this.colors = ['#ff4d4f','#ff7a45','#ffa940','#ffc53d','#ff85c0','#b37feb','#5cdbd3','#69b1ff','#95de64','#fff566'];
-    this.color = this.colors[Math.floor(Math.random() * this.colors.length)];
+    this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
   }
-  update() {
+  Firework.prototype.update = function() {
     if (!this.exploded) {
       this.y -= this.speed;
       if (this.y <= this.targetY) this.explode();
     }
-    this.particles.forEach(p => p.update());
-    this.particles = this.particles.filter(p => p.life > 0);
-  }
-  explode() {
+    for (var i = this.particles.length - 1; i >= 0; i--) {
+      this.particles[i].update();
+      if (this.particles[i].life <= 0) this.particles.splice(i, 1);
+    }
+  };
+  Firework.prototype.explode = function() {
     this.exploded = true;
-    const isMobile = window.innerWidth <= 768;
-    const particleCount = isMobile ? 50 + Math.floor(Math.random() * 20) : 70 + Math.floor(Math.random() * 30);
-    for (let i = 0; i < particleCount; i++) {
-      const angle = (Math.PI * 2 / particleCount) * i;
-      const speed = 1 + Math.random() * 3;
-      const color = this.colors[Math.floor(Math.random() * this.colors.length)];
-      this.particles.push(new Particle(this.x, this.y, color, {x: Math.cos(angle)*speed, y: Math.sin(angle)*speed}, 50 + Math.floor(Math.random()*30)));
+    var count = canvas.width <= 500 ? 45 : 70;
+    for (var i = 0; i < count; i++) {
+      var angle = (Math.PI * 2 / count) * i;
+      var speed = 1 + Math.random() * 2.5;
+      var c = COLORS[Math.floor(Math.random() * COLORS.length)];
+      this.particles.push(new Particle(
+        this.x, this.y, c,
+        Math.cos(angle) * speed, Math.sin(angle) * speed,
+        45 + Math.floor(Math.random() * 25)
+      ));
     }
-  }
-  draw() {
-    if (!this.exploded) { 
-      ctx.fillStyle = this.color; 
-      ctx.beginPath(); 
-      ctx.arc(this.x, this.y, 3, 0, Math.PI * 2); 
-      ctx.fill(); 
+  };
+  Firework.prototype.draw = function() {
+    if (!this.exploded) {
+      ctx.fillStyle = this.color;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+      ctx.fill();
     }
-    this.particles.forEach(p => p.draw());
-  }
-  isDead() { return this.exploded && this.particles.length === 0; }
-}
+    for (var i = 0; i < this.particles.length; i++) {
+      this.particles[i].draw();
+    }
+  };
+  Firework.prototype.isDead = function() {
+    return this.exploded && this.particles.length === 0;
+  };
 
-let fireworks = [];
-let frame = 0;
-function animate() {
-  ctx.fillStyle = 'rgba(10, 10, 46, 0.15)';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  const isMobile = window.innerWidth <= 768;
-  const spawnRate = isMobile ? 60 : 40;
-  if (frame % spawnRate === 0 || (frame < 100 && frame % 15 === 0)) {
-    fireworks.push(new Firework());
+  var fireworks = [];
+  var frame = 0;
+
+  function animate() {
+    ctx.fillStyle = 'rgba(10, 10, 46, 0.18)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    var spawnRate = canvas.width <= 500 ? 55 : 35;
+    if (frame % spawnRate === 0 || (frame < 80 && frame % 12 === 0)) {
+      fireworks.push(new Firework());
+    }
+    for (var i = fireworks.length - 1; i >= 0; i--) {
+      fireworks[i].update();
+      fireworks[i].draw();
+      if (fireworks[i].isDead()) fireworks.splice(i, 1);
+    }
+    frame++;
+    requestAnimationFrame(animate);
   }
-  fireworks.forEach(f => { f.update(); f.draw(); });
-  fireworks = fireworks.filter(f => !f.isDead());
-  frame++; 
-  requestAnimationFrame(animate);
-}
-animate();
+
+  // 延迟启动，确保 iframe 完全渲染
+  setTimeout(function() {
+    resizeCanvas();
+    animate();
+  }, 200);
+})();
 </script>
 </body>
 </html>
 """
-        components.html(fireworks_html, height=440, scrolling=False)
+        components.html(fireworks_html, height=420, scrolling=False)
 
         st.markdown("---")
         col1, col2 = st.columns(2)
