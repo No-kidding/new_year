@@ -1,7 +1,6 @@
 import random
 
 import streamlit as st
-import streamlit.components.v1 as components
 
 st.set_page_config(
     page_title="🧧 给欧阳闻笳的 2026 小冒险",
@@ -840,10 +839,6 @@ if st.session_state.stage == 3:
 <div style="text-align:center; padding:1.5rem 0 0.5rem 0;">
   <div style="font-size:2.1rem; font-weight:900; color:#d4380d !important; word-wrap:break-word; overflow-wrap:break-word;">
     🎊 新年快乐，{TARGET_NAME}！🎊
-  </div>
-  <div style="font-size:1.1rem; color:#8c8c8c !important; margin-top:0.4rem; word-wrap:break-word; overflow-wrap:break-word;">
-    2026，把日子过得更轻、更暖、更像你。
-  </div>
 </div>
 <style>
 @media (max-width: 768px) {{
@@ -860,77 +855,162 @@ if st.session_state.stage == 3:
         )
 
         st.markdown("### 🎇 小小烟花")
-        fireworks_html = """
-<div style="width:100%;background:#0a0a2e;border-radius:12px;overflow:hidden;position:relative;">
-<canvas id="fw" width="700" height="380" style="width:100%;display:block;background:#0a0a2e;"></canvas>
+
+        # ---- 纯 CSS 烟花动画，不需要 JavaScript / iframe / canvas ----
+        # 直接通过 st.markdown 嵌入，100% 兼容所有移动浏览器
+        st.markdown('''
+<style>
+.fw-sky {
+  width: 100%;
+  height: 340px;
+  background: linear-gradient(to bottom, #060620 0%, #0d1b3e 60%, #111845 100%);
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+  margin: 0.5rem 0;
+}
+/* 小星星背景 */
+.fw-sky::before {
+  content: "";
+  position: absolute;
+  width: 100%; height: 100%;
+  background-image:
+    radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 25% 50%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 45% 10%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 60% 65%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 75% 30%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 90% 70%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 35% 80%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1px 1px at 85% 85%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 55% 40%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1px 1px at 5% 90%, rgba(255,255,255,0.4), transparent);
+  animation: fw-twinkle 3s ease-in-out infinite alternate;
+}
+@keyframes fw-twinkle { 0%{opacity:0.5} 100%{opacity:1} }
+
+/* 每个烟花=上升线 + 爆炸球 */
+.fw-rocket {
+  position: absolute;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to top, transparent, var(--fw-c));
+  animation: fw-rise var(--fw-dur) ease-in infinite;
+  animation-delay: var(--fw-delay);
+  opacity: 0;
+}
+@keyframes fw-rise {
+  0%   { height: 0; opacity: 0; bottom: 0; }
+  10%  { opacity: 1; }
+  45%  { height: var(--fw-h); opacity: 1; bottom: calc(100% - var(--fw-h) - var(--fw-top)); }
+  50%  { height: 0; opacity: 0; bottom: calc(100% - var(--fw-top)); }
+  100% { height: 0; opacity: 0; }
+}
+
+.fw-burst {
+  position: absolute;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  top: var(--fw-top);
+  left: var(--fw-left);
+  transform: translate(-50%, -50%);
+  animation: fw-boom var(--fw-dur) ease-out infinite;
+  animation-delay: var(--fw-delay);
+  opacity: 0;
+}
+@keyframes fw-boom {
+  0%   { opacity: 0; transform: translate(-50%,-50%) scale(0);
+         box-shadow: 0 0 0 0 var(--fw-c); }
+  45%  { opacity: 0; transform: translate(-50%,-50%) scale(0); }
+  50%  { opacity: 1; transform: translate(-50%,-50%) scale(1);
+         box-shadow:
+           0 0 6px 2px var(--fw-c),
+           0 -30px 0 0px var(--fw-c),  0 30px 0 0px var(--fw-c),
+           30px 0 0 0px var(--fw-c),   -30px 0 0 0px var(--fw-c),
+           21px -21px 0 0px var(--fw-c), -21px 21px 0 0px var(--fw-c),
+           21px 21px 0 0px var(--fw-c),  -21px -21px 0 0px var(--fw-c),
+           0 -55px 0 0px var(--fw-c2),  0 55px 0 0px var(--fw-c2),
+           55px 0 0 0px var(--fw-c2),   -55px 0 0 0px var(--fw-c2),
+           39px -39px 0 0px var(--fw-c2), -39px 39px 0 0px var(--fw-c2),
+           39px 39px 0 0px var(--fw-c2),  -39px -39px 0 0px var(--fw-c2),
+           15px -50px 0 0px var(--fw-c), -15px 50px 0 0px var(--fw-c),
+           50px -15px 0 0px var(--fw-c), -50px 15px 0 0px var(--fw-c);
+  }
+  80%  { opacity: 0.6; transform: translate(-50%,-50%) scale(1.3);
+         box-shadow:
+           0 0 8px 0 transparent,
+           0 -60px 0 -1px var(--fw-c),  0 65px 0 -1px var(--fw-c),
+           60px 5px 0 -1px var(--fw-c),  -60px 5px 0 -1px var(--fw-c),
+           42px -37px 0 -1px var(--fw-c), -42px 43px 0 -1px var(--fw-c),
+           42px 43px 0 -1px var(--fw-c),  -42px -37px 0 -1px var(--fw-c),
+           0 -100px 0 -1px var(--fw-c2), 0 105px 0 -1px var(--fw-c2),
+           100px 5px 0 -1px var(--fw-c2), -100px 5px 0 -1px var(--fw-c2),
+           71px -66px 0 -1px var(--fw-c2), -71px 76px 0 -1px var(--fw-c2),
+           71px 76px 0 -1px var(--fw-c2),  -71px -66px 0 -1px var(--fw-c2),
+           25px -90px 0 -1px var(--fw-c), -25px 95px 0 -1px var(--fw-c),
+           90px -20px 0 -1px var(--fw-c), -90px 25px 0 -1px var(--fw-c);
+  }
+  100% { opacity: 0; transform: translate(-50%,-50%) scale(1.5);
+         box-shadow: 0 0 0 0 transparent; }
+}
+
+/* 祝福文字浮动 */
+.fw-text {
+  position: absolute;
+  bottom: 18px;
+  width: 100%;
+  text-align: center;
+  color: #ffd666 !important;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-shadow: 0 0 12px rgba(255,214,102,0.5);
+  letter-spacing: 0.15em;
+  animation: fw-glow 2s ease-in-out infinite alternate;
+  z-index: 10;
+}
+@keyframes fw-glow { 0%{opacity:0.7;text-shadow:0 0 8px rgba(255,214,102,0.3)} 100%{opacity:1;text-shadow:0 0 18px rgba(255,214,102,0.7)} }
+@media (max-width: 768px) {
+  .fw-sky { height: 260px; }
+  .fw-text { font-size: 0.9rem; bottom: 12px; }
+}
+</style>
+
+<div class="fw-sky">
+  <!-- 烟花1：红色 左侧 -->
+  <div class="fw-rocket" style="left:18%;--fw-c:#ff4d4f;--fw-h:120px;--fw-top:60px;--fw-dur:3.2s;--fw-delay:0s;"></div>
+  <div class="fw-burst" style="--fw-left:18%;--fw-top:60px;--fw-c:#ff4d4f;--fw-c2:#ff7a45;--fw-dur:3.2s;--fw-delay:0s;"></div>
+
+  <!-- 烟花2：金色 中间偏右 -->
+  <div class="fw-rocket" style="left:55%;--fw-c:#ffc53d;--fw-h:140px;--fw-top:45px;--fw-dur:3.8s;--fw-delay:0.6s;"></div>
+  <div class="fw-burst" style="--fw-left:55%;--fw-top:45px;--fw-c:#ffc53d;--fw-c2:#ffa940;--fw-dur:3.8s;--fw-delay:0.6s;"></div>
+
+  <!-- 烟花3：粉色 右侧 -->
+  <div class="fw-rocket" style="left:80%;--fw-c:#ff85c0;--fw-h:110px;--fw-top:70px;--fw-dur:3.5s;--fw-delay:1.2s;"></div>
+  <div class="fw-burst" style="--fw-left:80%;--fw-top:70px;--fw-c:#ff85c0;--fw-c2:#b37feb;--fw-dur:3.5s;--fw-delay:1.2s;"></div>
+
+  <!-- 烟花4：蓝色 中间偏左 -->
+  <div class="fw-rocket" style="left:35%;--fw-c:#69b1ff;--fw-h:130px;--fw-top:50px;--fw-dur:4.0s;--fw-delay:1.8s;"></div>
+  <div class="fw-burst" style="--fw-left:35%;--fw-top:50px;--fw-c:#69b1ff;--fw-c2:#5cdbd3;--fw-dur:4.0s;--fw-delay:1.8s;"></div>
+
+  <!-- 烟花5：绿色 右偏 -->
+  <div class="fw-rocket" style="left:68%;--fw-c:#95de64;--fw-h:100px;--fw-top:80px;--fw-dur:3.3s;--fw-delay:2.4s;"></div>
+  <div class="fw-burst" style="--fw-left:68%;--fw-top:80px;--fw-c:#95de64;--fw-c2:#fff566;--fw-dur:3.3s;--fw-delay:2.4s;"></div>
+
+  <!-- 烟花6：紫色 左偏 -->
+  <div class="fw-rocket" style="left:10%;--fw-c:#b37feb;--fw-h:95px;--fw-top:90px;--fw-dur:3.6s;--fw-delay:2.8s;"></div>
+  <div class="fw-burst" style="--fw-left:10%;--fw-top:90px;--fw-c:#b37feb;--fw-c2:#ff85c0;--fw-dur:3.6s;--fw-delay:2.8s;"></div>
+
+  <!-- 烟花7：橙色 中间 -->
+  <div class="fw-rocket" style="left:45%;--fw-c:#ff7a45;--fw-h:150px;--fw-top:35px;--fw-dur:4.2s;--fw-delay:0.3s;"></div>
+  <div class="fw-burst" style="--fw-left:45%;--fw-top:35px;--fw-c:#ff7a45;--fw-c2:#ffc53d;--fw-dur:4.2s;--fw-delay:0.3s;"></div>
+
+  <!-- 烟花8：青色 右边 -->
+  <div class="fw-rocket" style="left:90%;--fw-c:#5cdbd3;--fw-h:105px;--fw-top:75px;--fw-dur:3.9s;--fw-delay:1.5s;"></div>
+  <div class="fw-burst" style="--fw-left:90%;--fw-top:75px;--fw-c:#5cdbd3;--fw-c2:#69b1ff;--fw-dur:3.9s;--fw-delay:1.5s;"></div>
+
+  <div class="fw-text">✨ 新年快乐 · 烟花为你而绽放 ✨</div>
 </div>
-<script>
-(function(){
-  var c = document.getElementById('fw');
-  if(!c) return;
-  var g = c.getContext('2d');
-  var W = 700, H = 380;
-  var CL = ['#ff4d4f','#ff7a45','#ffa940','#ffc53d','#ff85c0','#b37feb','#5cdbd3','#69b1ff','#95de64','#fff566','#ffffff'];
-  var ps = [];
-  var fs = [];
-  var fr = 0;
-
-  function P(x,y,cl,vx,vy,li){
-    this.x=x;this.y=y;this.cl=cl;this.vx=vx;this.vy=vy;this.li=li;this.ml=li;
-  }
-  P.prototype.up=function(){this.vy+=0.025;this.x+=this.vx;this.y+=this.vy;this.li--;};
-  P.prototype.dr=function(){
-    var a=Math.max(this.li/this.ml,0);
-    g.save();g.globalAlpha=a;g.fillStyle=this.cl;
-    g.beginPath();g.arc(this.x,this.y,2.5,0,6.28);g.fill();g.restore();
-  };
-
-  function F(){
-    this.x=Math.random()*W;
-    this.y=H;
-    this.ty=Math.random()*H*0.35+20;
-    this.sp=3+Math.random()*2;
-    this.ex=false;
-    this.ps=[];
-    this.cl=CL[Math.floor(Math.random()*CL.length)];
-  }
-  F.prototype.up=function(){
-    if(!this.ex){this.y-=this.sp;if(this.y<=this.ty)this.boom();}
-    for(var i=this.ps.length-1;i>=0;i--){this.ps[i].up();if(this.ps[i].li<=0)this.ps.splice(i,1);}
-  };
-  F.prototype.boom=function(){
-    this.ex=true;
-    var n=55;
-    for(var i=0;i<n;i++){
-      var a=(6.28/n)*i;
-      var s=1+Math.random()*2.8;
-      var cl=CL[Math.floor(Math.random()*CL.length)];
-      this.ps.push(new P(this.x,this.y,cl,Math.cos(a)*s,Math.sin(a)*s,40+Math.floor(Math.random()*25)));
-    }
-  };
-  F.prototype.dr=function(){
-    if(!this.ex){g.fillStyle=this.cl;g.beginPath();g.arc(this.x,this.y,3,0,6.28);g.fill();}
-    for(var i=0;i<this.ps.length;i++){this.ps[i].dr();}
-  };
-  F.prototype.dead=function(){return this.ex&&this.ps.length===0;};
-
-  function run(){
-    g.fillStyle='rgba(10,10,46,0.18)';
-    g.fillRect(0,0,W,H);
-    if(fr%38===0||(fr<90&&fr%10===0)){fs.push(new F());}
-    for(var i=fs.length-1;i>=0;i--){fs[i].up();fs[i].dr();if(fs[i].dead())fs.splice(i,1);}
-    fr++;
-    requestAnimationFrame(run);
-  }
-
-  // 画一帧背景，确保立即可见
-  g.fillStyle='#0a0a2e';
-  g.fillRect(0,0,W,H);
-  run();
-})();
-</script>
-"""
-        components.html(fireworks_html, height=400, scrolling=False)
+''', unsafe_allow_html=True)
 
         st.markdown("---")
         col1, col2 = st.columns(2)
